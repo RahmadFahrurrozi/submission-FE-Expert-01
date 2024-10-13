@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Website untuk mencari restoran" />
+    <meta name="author" content="Rahmad Fahrurrozi" />
+    <title>Restaurant Apps</title>
+  </head>
+  <body>
+    <nav tabindex="0">
+      <div class="nav-logo" tabindex="0">
+        <img src="./images/heros/logo-restourant.png" alt="logo" />
+        <p>Fizzy Bites</p>
+      </div>
+      <ul class="nav-menu" id="navMenu" role="menu">
+        <li role="none">
+          <a href="index.html" tabindex="0" role="menuitem">Home</a>
+        </li>
+        <li role="none">
+          <a href="#" tabindex="0" role="menuitem">Favorite</a>
+        </li>
+        <li role="none">
+          <a
+            href="https://github.com/RahmadFahrurrozi"
+            tabindex="0"
+            role="menuitem"
+            >About Us</a
+          >
+        </li>
+      </ul>
+      <button
+        class="hamburger-menu"
+        aria-label="Toggle menu"
+        id="hamburgerButton"
+        tabindex="0"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Fizzy Bites</h1>
+          <p>Discover a world of culinary delights at Fizzy Bites!</p>
+          <p>
+            From sizzling local favorites to international cuisines, we bring
+            you the best restaurants in town.
+          </p>
+
+          <a href="#">
+            <button class="explore-button">Explore Now</button>
+          </a>
+        </div>
+      </section>
+
+      <section class="menu">
+        <h2>Fizzy Bites Menu</h2>
+        <div id="menuList" class="menu-list"></div>
+      </section>
+    </main>
+
+    <script src="../scripts/index.js"></script>
+  </body>
+</html>
