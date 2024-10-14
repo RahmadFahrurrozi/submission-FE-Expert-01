@@ -4,6 +4,9 @@ import "../styles/navbar.css";
 import "../styles/heroSection.css";
 import "../styles/menu-section.css";
 import "../styles/footer.css";
+import "../styles/about.css";
+import "../styles/gallerySection.css";
+
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerButton = document.getElementById("hamburgerButton");
   const navMenu = document.getElementById("navMenu");
