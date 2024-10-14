@@ -3,7 +3,7 @@ import "../styles/reset.css";
 import "../styles/navbar.css";
 import "../styles/heroSection.css";
 import "../styles/menu-section.css";
-
+import "../styles/footer.css";
 document.addEventListener("DOMContentLoaded", () => {
   const hamburgerButton = document.getElementById("hamburgerButton");
   const navMenu = document.getElementById("navMenu");
@@ -74,7 +74,6 @@ function createMenuItemHTML(restaurant) {
   `;
 }
 
-// Fungsi untuk merender menu
 async function renderMenu() {
   const menuList = document.getElementById("menuList");
   const restaurants = await loadMenuData();

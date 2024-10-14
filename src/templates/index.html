@@ -8,40 +8,46 @@
     <title>Restaurant Apps</title>
   </head>
   <body>
-    <nav tabindex="0">
-      <div class="nav-logo" tabindex="0">
-        <img src="./images/heros/logo-restourant.png" alt="logo" />
-        <p>Fizzy Bites</p>
-      </div>
-      <ul class="nav-menu" id="navMenu" role="menu">
-        <li role="none">
-          <a href="index.html" tabindex="0" role="menuitem">Home</a>
-        </li>
-        <li role="none">
-          <a href="#" tabindex="0" role="menuitem">Favorite</a>
-        </li>
-        <li role="none">
-          <a
-            href="https://github.com/RahmadFahrurrozi"
-            tabindex="0"
-            role="menuitem"
-            >About Us</a
-          >
-        </li>
-      </ul>
-      <button
-        class="hamburger-menu"
-        aria-label="Toggle menu"
-        id="hamburgerButton"
-        tabindex="0"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <header>
+      <nav tabindex="0">
+        <div class="nav-logo" tabindex="0">
+          <img
+            src="./images/heros/logo-restourant.png"
+            alt="Fizzy Bites Logo"
+          />
+          <p>Fizzy Bites</p>
+        </div>
+        <ul class="nav-menu" id="navMenu" role="menu">
+          <li role="none">
+            <a href="index.html" tabindex="0" role="menuitem">Home</a>
+          </li>
+          <li role="none">
+            <a href="#" tabindex="0" role="menuitem">Favorite</a>
+          </li>
+          <li role="none">
+            <a
+              href="https://github.com/RahmadFahrurrozi"
+              tabindex="0"
+              role="menuitem"
+              >About Us</a
+            >
+          </li>
+        </ul>
+        <button
+          class="hamburger-menu"
+          aria-label="Toggle menu"
+          id="hamburgerButton"
+          tabindex="0"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
-    <main>
+    <main id="mainContent">
       <section class="hero">
         <div class="hero-content">
           <h1>Fizzy Bites</h1>
@@ -51,17 +57,22 @@
             you the best restaurants in town.
           </p>
 
-          <a href="#">
+          <a href="#menu">
             <button class="explore-button">Explore Now</button>
           </a>
         </div>
       </section>
 
-      <section class="menu">
+      <section id="menu" class="menu">
         <h2>Fizzy Bites Menu</h2>
         <div id="menuList" class="menu-list"></div>
       </section>
     </main>
+
+    <footer>
+      <img src="./images/heros/logo-restourant.png" alt="Fizzy Bites Logo" />
+      <p class="footer-text">© 2024 Fizzy Bites. All rights reserved.</p>
+    </footer>
 
     <script src="../scripts/index.js"></script>
   </body>
