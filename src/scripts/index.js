@@ -54,7 +54,7 @@ function createMenuItemHTML(restaurant) {
       : restaurant.description;
 
   return `
-    <div class="menu-item">
+    <div class="menu-item" tabindex="0">
       <img src="${restaurant.pictureId}" alt="${restaurant.name}" />
       <div class="menu-item-content">
         <h3 class="menu-item-title">${restaurant.name}</h3>
