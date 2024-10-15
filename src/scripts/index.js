@@ -29,23 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
       navMenu.classList.remove("active");
     }
   });
+
+  renderMenu();
 });
 
 async function loadMenuData() {
   try {
-    const response = await fetch("/data/DATA.json");
+    const response = await fetch("./data/DATA.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const text = await response.text();
-    try {
-      const data = JSON.parse(text);
-      return data.restaurants;
-    } catch (parseError) {
-      console.error("Error parsing JSON:", parseError);
-      console.log("Received text:", text);
-      throw parseError;
-    }
+    const data = await response.json();
+    return data.restaurants;
   } catch (error) {
     console.error("Error loading menu data:", error);
     return [];
@@ -53,15 +48,17 @@ async function loadMenuData() {
 }
 
 function createMenuItemHTML(restaurant) {
+  const truncatedDescription =
+    restaurant.description.length > 150
+      ? `${restaurant.description.substring(0, 150)}...`
+      : restaurant.description;
+
   return `
     <div class="menu-item">
       <img src="${restaurant.pictureId}" alt="${restaurant.name}" />
       <div class="menu-item-content">
         <h3 class="menu-item-title">${restaurant.name}</h3>
-        <p class="menu-item-description">${restaurant.description.substring(
-          0,
-          150
-        )}...</p>
+        <p class="menu-item-description">${truncatedDescription}</p>
         <div class="menu-item-details">
           <div class="menu-item-rating">
             <span class="star-icon">★</span>
@@ -81,8 +78,11 @@ async function renderMenu() {
   const menuList = document.getElementById("menuList");
   const restaurants = await loadMenuData();
 
+  if (restaurants.length === 0) {
+    menuList.innerHTML = "<p>Tidak ada data menu restoran yang tersedia.</p>";
+    return;
+  }
+
   const menuHTML = restaurants.map(createMenuItemHTML).join("");
   menuList.innerHTML = menuHTML;
 }
-
-document.addEventListener("DOMContentLoaded", renderMenu);
