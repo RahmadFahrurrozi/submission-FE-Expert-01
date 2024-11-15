@@ -1,4 +1,5 @@
 import "regenerator-runtime";
+import 'remixicon/fonts/remixicon.css';
 import "../styles/reset.css";
 import "../styles/navbar.css";
 import "../styles/heroSection.css";
@@ -66,9 +67,10 @@ function createMenuItemHTML(restaurant) {
           </div>
         </div>
         <div class="menu-item-location">
-          <span class="map-icon">📍</span>
+          <i class="ri-map-pin-fill"></i>
           <span class="city-name">${restaurant.city}</span>
         </div>
+        <a href="#" class="cta-button">Lihat Detail</a>
       </div>
     </div>
   `;

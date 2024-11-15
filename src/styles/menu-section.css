@@ -75,6 +75,21 @@
   font-weight: 700;
   color: #ffd700;
 }
+.cta-button {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #ff4b4b;background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: white;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.ri-map-pin-fill {
+  color: #ff4b4b;
+}
 
 @media screen and (min-width: 768px) {
   .menu {
