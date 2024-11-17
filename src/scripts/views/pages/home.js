@@ -1,3 +1,4 @@
+import '../components/hero-section.js';
 import '../components/galerry-section.js';
 import '../components/about-section.js';
 
@@ -10,6 +11,7 @@ const Home = {
         <h2>Fizzy Bites Menu</h2>
         <div id="menuList" class="menu-list" tabindex="0" role="list" aria-label="Menu items"></div>
       </section>
+
       <gallery-section></gallery-section>
     `;
   },

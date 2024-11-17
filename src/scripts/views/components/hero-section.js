@@ -9,7 +9,7 @@ class heroSection extends HTMLElement {
 
     render() {
         this.innerHTML = `
-        <section id="hero" class="hero-section">
+        <section class="hero">
             <div class="hero-content">
                 <h1>Fizzy Bites</h1>
                 <p>Discover a world of culinary delights at Fizzy Bites!</p>
@@ -18,7 +18,7 @@ class heroSection extends HTMLElement {
                     <button class="explore-button">Explore Now</button>
                 </a>
             </div>
-        </section>
+      </section>
         `
     }
 }
