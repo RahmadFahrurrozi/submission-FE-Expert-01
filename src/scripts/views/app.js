@@ -24,12 +24,25 @@ class App {
     });
   }
 
+  
   async renderPage() {
-    const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url];
-    this._content.innerHTML = await page.render();
-    await page.afterRender();
+    try {
+      const url = UrlParser.parseActiveUrlWithCombiner();
+      const page = routes[url];
+      
+      if (!page) {
+        console.error('Page not found for URL:', url);
+        this._content.innerHTML = `<div class="error">Page not found</div>`;
+        return;
+      }
+
+      this._content.innerHTML = await page.render();
+      await page.afterRender();
+      
+    } catch (error) {
+      console.error('Error rendering page:', error);
+      this._content.innerHTML = `<div class="error">Error loading page</div>`;
+    }
   }
 }
- 
 export default App;
