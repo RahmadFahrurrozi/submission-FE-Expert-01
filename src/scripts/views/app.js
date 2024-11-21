@@ -24,7 +24,6 @@ class App {
     });
   }
 
-  
   async renderPage() {
     try {
       const url = UrlParser.parseActiveUrlWithCombiner();
@@ -36,8 +35,11 @@ class App {
         return;
       }
 
-      this._content.innerHTML = await page.render();
-      await page.afterRender();
+      this._content.innerHTML = await page.render(window.location.hash.slice(1));
+      
+      if (typeof page.afterRender === 'function') {
+        await page.afterRender(window.location.hash.slice(1));
+      }
       
     } catch (error) {
       console.error('Error rendering page:', error);
@@ -45,4 +47,5 @@ class App {
     }
   }
 }
+
 export default App;

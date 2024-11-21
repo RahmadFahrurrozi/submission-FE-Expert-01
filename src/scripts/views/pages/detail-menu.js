@@ -1,18 +1,88 @@
+import FizziRestourantSource from '../../data/fizziRestourant-source';
+import CONFIG from '../../globals/config';
+import UrlParser from '../../routes/url-parser';
+
 const DetailMenu = {
     async render() {
         return `
             <section id="detail" class="detail" tabindex="0">
-                <div class="detail-content">
-                    <div class="detail-text">
-                        <h2>Detail Menu</h2>
-                        <p>Detail menu restoran</p>
-                    </div>
+                <div id="restaurant-detail-container" class="detail-content">
+                    <div class="loading">Memuat detail restoran...</div>
                 </div>
             </section>
         `;
     },
+
     async afterRender() {
-        
+        const { id } = UrlParser.parseActiveUrlWithoutCombiner();
+        const detailContainer = document.getElementById('restaurant-detail-container');
+        try {
+            const restaurant = await FizziRestourantSource.detailRestaurant(id);
+            detailContainer.innerHTML = `
+                <div class="restaurant-header">
+                    <img src="${CONFIG.BASE_IMAGE_URL}${restaurant.pictureId}" 
+                         alt="${restaurant.name}"
+                         class="restaurant-image"
+                         onerror="this.onerror=null;this.src='./images/default.jpg';">
+                    <h2 class="restaurant-name">${restaurant.name}</h2>
+                </div>
+                <div class="restaurant-info">
+                    <div class="restaurant-meta">
+                        <span class="city">📍 ${restaurant.city}</span>
+                        <span class="rating">⭐ ${restaurant.rating}</span>
+                    </div>
+
+                    <div class="restaurant-description">
+                        <h3>Deskripsi</h3>
+                        <p>${restaurant.description}</p>
+                    </div>
+
+                    <div class="restaurant-address">
+                        <h3>Alamat</h3>
+                        <p>${restaurant.address}</p>
+                    </div>
+
+                    <div class="restaurant-categories">
+                        <h3>Kategori</h3>
+                        <p>${restaurant.categories.map(category => category.name).join(', ')}</p>
+                    </div>
+
+                    <div class="restaurant-menus">
+                        <div class="foods">
+                            <h3>Menu Makanan</h3>
+                            <ul>
+                                ${restaurant.menus.foods.map(food => `<li>${food.name}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="drinks">
+                            <h3>Menu Minuman</h3>
+                            <ul>
+                                ${restaurant.menus.drinks.map(drink => `<li>${drink.name}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-reviews">
+                        <h3>Ulasan Pelanggan</h3>
+                        ${restaurant.customerReviews.map(review => `
+                            <div class="review">
+                                <h4>${review.name}</h4>
+                                <p>${review.review}</p>
+                                <small>${review.date}</small>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            detailContainer.innerHTML = `
+                <div class="error-container">
+                    <h2>Error</h2>
+                    <p>Gagal memuat detail restoran: ${error.message}</p>
+                </div>
+            `;
+        }
     }
 };
 

@@ -7,6 +7,7 @@ import '../styles/menu-section.css';
 import '../styles/footer.css';
 import '../styles/about.css';
 import '../styles/gallerySection.css';
+import '../styles/detail-restaurant.css';
 import App from './views/app';
 
 const app = new App({

@@ -20,7 +20,8 @@ const UrlParser = {
   },
  
   _urlCombiner(splitedUrl) {
-    if (splitedUrl.resource === 'detail-menu') {
+    // Modifikasi di bagian ini untuk mendukung detail-menu
+    if (splitedUrl.resource === 'detail-menu' && splitedUrl.id) {
       return '/detail-menu/:id';
     }
 
