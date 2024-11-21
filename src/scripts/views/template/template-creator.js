@@ -1,3 +1,5 @@
+import CONFIG from '../../globals/config';
+
 const createRestaurantDetailTemplate = (restaurant) => `
     <div class="restaurant-header">
         <img src="${CONFIG.BASE_IMAGE_URL}${restaurant.pictureId}" 
