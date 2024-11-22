@@ -87,6 +87,10 @@
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
+.cta-link {
+  text-decoration: none;
+  color: #fff;
+}
 .ri-map-pin-fill {
   color: #ff4b4b;
 }

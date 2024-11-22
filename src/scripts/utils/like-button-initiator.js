@@ -1,4 +1,5 @@
 import FavoriteRestaurantIdb from '../data/favorite-fizzirestourant-idb';
+import { createLikeButtonTemplate, createUnlikeButtonTemplate } from '../views/template/template-creator';
 
 const LikeButtonInitiator = {
   async init({ likeButtonContainer, restaurant }) {
@@ -9,26 +10,22 @@ const LikeButtonInitiator = {
   },
 
   async _renderButton() {
-    const { id } = this._restaurant;
+    try {
+      const { id } = this._restaurant;
+      const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
 
-    if (await this._isRestaurantExist(id)) {
-      this._renderLiked();
-    } else {
-      this._renderLike();
+      if (restaurant) {
+        this._renderUnlike();
+      } else {
+        this._renderLike();
+      }
+    } catch (error) {
+      console.error('Error rendering button:', error);
     }
   },
 
-  async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
-    return !!restaurant;
-  },
-
-  _renderLike() {
-    this._likeButtonContainer.innerHTML = `
-      <button aria-label="like this restaurant" id="likeButton" class="like">
-        <i class="fa fa-heart-o" aria-hidden="true"></i>
-      </button>
-    `;
+  async _renderLike() {
+    this._likeButtonContainer.innerHTML = createLikeButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
@@ -37,15 +34,11 @@ const LikeButtonInitiator = {
     });
   },
 
-  _renderLiked() {
-    this._likeButtonContainer.innerHTML = `
-      <button aria-label="unlike this restaurant" id="likeButton" class="like">
-        <i class="fa fa-heart" aria-hidden="true"></i>
-      </button>
-    `;
+  async _renderUnlike() {
+    this._likeButtonContainer.innerHTML = createUnlikeButtonTemplate();
 
-    const likeButton = document.querySelector('#likeButton');
-    likeButton.addEventListener('click', async () => {
+    const unlikeButton = document.querySelector('#likeButton');
+    unlikeButton.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
       this._renderButton();
     });

@@ -8,6 +8,7 @@ import '../styles/footer.css';
 import '../styles/about.css';
 import '../styles/gallerySection.css';
 import '../styles/detail-restaurant.css';
+import '../styles/like.css';
 import App from './views/app';
 
 const app = new App({

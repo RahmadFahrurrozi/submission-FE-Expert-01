@@ -83,6 +83,27 @@ const createErrorTemplate = (message) => `
         <p>Gagal memuat detail restoran: ${message}</p>
     </div>
 `;
+const createRestaurantItemTemplate = (restaurant) => `
+  <div class="restaurant-item">
+    <div class="restaurant-item__header">
+      <img class="restaurant-item__header__poster" alt="${restaurant.name}"
+        src="${CONFIG.BASE_IMAGE_URL}${restaurant.pictureId}">
+      <div class="restaurant-item__header__rating">
+        <p>⭐️<span class="restaurant-item__header__rating__score">${restaurant.rating}</span></p>
+      </div>
+    </div>
+    <div class="restaurant-item__content">
+      <h3 class="restaurant__name">${restaurant.name}</a></h3>
+      <p class="restaurant__city">📍 ${restaurant.city}</p>
+      <p class="restaurant__description">${restaurant.description.slice(0, 150)}...</p>
+        <button type="button" class="cta-button">
+            <a class="cta-link" href="#/detail-menu/${restaurant.id}">
+                Lihat Detail
+            </a>
+        </button>
+    </div>
+  </div>
+`;
 
 export {
     createRestaurantDetailTemplate,
@@ -91,4 +112,5 @@ export {
     createUnlikeButtonTemplate,
     createLoadingTemplate,
     createErrorTemplate,
+    createRestaurantItemTemplate
 };

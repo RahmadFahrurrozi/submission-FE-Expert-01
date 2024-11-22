@@ -54,9 +54,11 @@ class MenuSection extends HTMLElement {
             </span>
           </div>
           <p class="description">${shortDescription}</p>
-          <a href="#/detail-menu/${restaurant.id}" class="cta-button">
-            Lihat Detail
-          </a>
+          <button type="button" class="cta-button">
+            <a class="cta-link" href="#/detail-menu/${restaurant.id}">
+              Lihat Detail
+            </a>
+          </button>
         </div>
       `;
       menuList.appendChild(menuItem);

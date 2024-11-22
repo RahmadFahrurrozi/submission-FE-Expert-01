@@ -27,7 +27,6 @@ const DetailMenu = {
             const restaurant = await FizziRestourantSource.detailRestaurant(id);
             detailContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 
-            // Initialize like button
             LikeButtonInitiator.init({
                 likeButtonContainer: document.querySelector('#likeButtonContainer'),
                 restaurant: {
